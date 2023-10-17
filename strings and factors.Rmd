@@ -1,0 +1,96 @@
+---
+title: "Strings and Factors"
+author: "Ruoxi Li"
+date: "`r Sys.Date()`"
+output: github_document
+---
+
+str_detect()
+
+```{r}
+library(p8105.datasets)
+library(rvest)
+library(tidyverse)
+```
+
+## Strings and manipulations
+
+```{r}
+string_vec = c("my", "name", "is", "jeff")
+
+str_detect(string_vec, "jeff")
+
+str_detect(string_vec,"e")
+
+str_replace(string_vec, "jeff","Jeff Goldsmith")
+
+
+```
+
+```{r}
+string_vec = c(
+  "i think we all rule for participating",
+  "i think i have been caught",
+  "i think this will be quite fun actually",
+  "it will be fun, i think"
+  )
+
+str_detect(string_vec, "i think")
+
+str_detect(string_vec, "^i think")
+
+#starts with : ^ , end with : $
+```
+
+
+```{r}
+string_vec = c(
+  "Time for a Pumpkin Spice Latte!",
+  "went to the #pumpkinpatch last weekend",
+  "Pumpkin Pie is obviously the best pie",
+  "SMASHING PUMPKINS -- LIVE IN CONCERT!!"
+  )
+
+str_detect(string_vec,"[Pp]umpkin")
+```
+
+```{r}
+string_vec = c(
+  '7th inning stretch',
+  '1st half soon to begin. Texas won the toss.',
+  'she is 5 feet 4 inches tall',
+  '3AM - cant sleep :('
+  )
+
+str_detect(string_vec, "^[0-9][a-zA-Z]")
+# starting with a number , then a character
+```
+
+
+
+```{r}
+string_vec = c(
+  'Its 7:11 in the evening',
+  'want to go to 7-11?',
+  'my flight is AA711',
+  'NetBios: scanning ip 203.167.114.66'
+  )
+
+str_detect(string_vec, "7.11")
+# The character . matches anything.
+```
+
+```{r}
+string_vec = c(
+  'The CI is [2, 5]',
+  ':-]',
+  ':-[',
+  'I found the answer on pages [6-7]'
+  )
+
+str_detect(string_vec, "\\[")
+# finding a special character [
+
+str_detect(string_vec, "\\[[0-9]")
+```
+
